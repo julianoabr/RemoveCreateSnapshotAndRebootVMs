@@ -591,7 +591,7 @@ Clear-Host
 #MAIN SCRIPT
 $vmList = @()
 
-[string]$dayOkOne = 'Wedsneyday'
+[string]$dayOkOne = 'Wednesday'
 [string]$dayOkTwo = 'Sunday'
 
 #String Teste
@@ -609,7 +609,10 @@ if ($ActionMethod -eq 'Automatic'){
     if (($dayToRun -eq $dayOkOne) -or ($dayToRun -eq $dayOkTwo)){
     
         Write-Output "Let's Run the script. Today is $dayToRun"
-
+	
+	#Initialize Array with List of VMs
+	$vmList = @()
+	
         $vmList = (Get-Content -Path "$env:SystemDrive\Temp\vmList.txt")
     
         Connect-ToVcenterServer -methodToConnect Automatic -vCenterToConnect vCServer1.yourdomain.private -port 443
