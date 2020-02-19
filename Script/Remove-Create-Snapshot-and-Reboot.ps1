@@ -13,7 +13,7 @@
 .AUTHOR
     Juliano Alves de Brito Ribeiro (jaribeiro@uoldiveo.com or julianoalvesbr@live.com)
 .VERSION
-    0.1
+    0.2
 .ENVIRONMENT
     ***Development
     Test
@@ -310,7 +310,8 @@ function Remove-VMVmwareSnapshot
     [int]$HourToConsider = -72
 
     $trimDate = (Get-Date).AddHours($HourToConsider)
-
+    
+    #This String has a objective to when the script encounters this string, it not remove snapshot. 
     [string]$stringDNR = 'DNR5'
 
     foreach ($vmName in $VirtualMachineList){
@@ -388,11 +389,11 @@ function Scheduled-RemoteRestart
 
         [Parameter(Mandatory=$false,
         Position=2)]
-        [int]$initialTime = 0001,
+        [System.String]$initialTime = '0001',
 
         [Parameter(Mandatory=$false,
         Position=3)]
-        [int]$finalTime = 0235
+        [System.String]$finalTime = '0245'
 
         
     )
@@ -462,10 +463,7 @@ switch ($vmSizeArray)
     }#end of 9
 }#end of switch size array
 
-
-$tmpCompareTime = (Get-Date -Format HHmm).ToString()
-
-$compareTime = $tmpCompareTime / 1
+$CompareTime = (Get-Date -Format HHmm).ToString()
 
 if (($compareTime -ge $initialTime) -and ($compareTime -le $finalTime)){
 
@@ -499,9 +497,7 @@ if (($compareTime -ge $initialTime) -and ($compareTime -le $finalTime)){
         }#end of IF Error 0
         else{
         
-            $tmpDateString = (get-date -Format HHmm).ToString()
-          
-            $tmpDate = ($tmpDateString / 1)
+            $tmpDate = (get-date -Format HHmm).ToString()
 
             $tmpReboot = $rebootListHour[$counterHour]
 
