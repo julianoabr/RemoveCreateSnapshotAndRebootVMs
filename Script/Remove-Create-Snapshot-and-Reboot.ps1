@@ -412,7 +412,7 @@ else{
     
 }#else validate module
 
-$vmSizeArray = $VirtualMachineList.Length
+$vmSizeArray = $VirtualMachineList.Count
 
 switch ($vmSizeArray)
 {
