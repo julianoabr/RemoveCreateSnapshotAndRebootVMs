@@ -11,7 +11,7 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 .AUTHOR
-    Juliano Alves de Brito Ribeiro (jaribeiro@uoldiveo.com or julianoalvesbr@live.com)
+    Juliano Alves de Brito Ribeiro (Find me At: julianoalvesbr@live.com or https://github.com/julianoabr/)
 .VERSION
     0.2
 .ENVIRONMENT
